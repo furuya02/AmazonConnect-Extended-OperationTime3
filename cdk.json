@@ -1,0 +1,3 @@
+{
+  "app": "npx ts-node bin/amazon_connect-extended-operation_time.ts"
+}
