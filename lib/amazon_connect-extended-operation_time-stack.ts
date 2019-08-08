@@ -8,6 +8,8 @@ const tag = "connect-ex-opetime";
 const settingFile = "OperationTime.txt";
 // 設定ファイルを保存するバケット名（変更の必要があります）
 const bucketName = tag + "setting-bucket";
+// Lambdaのタイムゾーン
+const timeZone = 'Asia/Tokyo';
 
 export class AmazonConnectExtendedOperationTimeStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -26,6 +28,7 @@ export class AmazonConnectExtendedOperationTimeStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_10_X,
       timeout: cdk.Duration.seconds(3),
       environment: {
+          TZ: timeZone,
           SETTING_BUCKET: settingBucket.bucketName,
           SETTING_FILE: settingFile
       }
